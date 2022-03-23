@@ -23,6 +23,14 @@ var authors = [
   { name: 'Brandon Sanderson', age: 42, id: '2' },
   { name: 'Terry Pratchett', age: 66, id: '3' }
 ];
+const UserType = new GraphQLObjectType({
+  name: 'User',
+  fields: () => ({
+    id: { type: GraphQLID },
+    name: { type: GraphQLString },
+    favorite: { type: new GraphQLList(BookType) }
+  })
+});
 const BookType = new GraphQLObjectType({
   name: 'Book',
   fields: () => ({
